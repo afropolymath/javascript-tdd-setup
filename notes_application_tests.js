@@ -10,13 +10,18 @@ describe("Check that creating a note object properly", function(){
 	it("should assign the note content based on the parameter supplied",function(){
 		var an_object = {
 			author: "kachi",
+			note_content: "stuff"
 		};
-		var note = new Notes({author: "kachi", note_content: "stuff"});
+		var note = new Notes(an_object);
 		assert(note.note_content == "stuff");
 	})
 
 	it("should assign the author based on the parameter supplied",function(){
-		var note = new Notes({author: "kachi", note_content: "stuff"});
+		var an_object = {
+			author: "kachi",
+			note_content: "stuff"
+		};
+		var note = new Notes(an_object);
 		assert(note.author == "kachi");
 	})
 })
@@ -43,7 +48,8 @@ describe("it should check if you can get a note", function(){
 		var note = new Notes({author: "kachi", note_content: "stuff"});
 		var check = new NotesApplication();
 		check.create_notes(note);
-		assert("stuff");
+		check.get(0);
+		assert(check.notes[0].note_content === "stuff");
 	})
 
 	it("check that you can't retrieve a note with an invalid ID", function(){
@@ -75,8 +81,8 @@ describe("edit functionality works properly", function(){
 	})
 })
 
-describe("that you can delete a note at index 1", function(){
-	it("check that list notes returns notes ", function(){
+describe("that you can delete a note", function(){
+	it("check that you can delete a note at index 1 ", function(){
 		var note = new Notes({author: "kachi", note_content: "stuff"});
 		var note2 = new Notes({author: "kachi", note_content: "stuff2"});
 		var check = new NotesApplication();
@@ -85,7 +91,6 @@ describe("that you can delete a note at index 1", function(){
 		assert(check.notes.length === 2);
 		check.delete(1);
 		assert(check.notes.length == 1);
-		assert(check.notes[1] === null);
 
 	})
 
