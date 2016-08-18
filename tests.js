@@ -3,22 +3,22 @@
 var chai = require('chai');
 var assert = chai.assert;
 
-var lib = require('./lib/library.js');
+var NotesApplication = require('./lib/notesapplication.js');
+var Note = require('./lib/note.js');
 
-describe("Test that constants are computed properly", function() {
-  it("should give 10, 4 for constants 2, 5 as a and n respectively", function() {
-    assert(
-      lib.compareCoefficients(lib.quadraticDerivative(2, 5), { a: 10, n: 4 })
-    );
-  });
-  it("should give 2, 1 for constants 1, 2 as a and n respectively", function() {
-    assert(
-      lib.compareCoefficients(lib.quadraticDerivative(1, 2), { a: 2, n: 1 })
-    );
-  });
-  it("should give 8, 1 for constants 4, 2 as a and n respectively", function() {
-    assert(
-      lib.compareCoefficients(lib.quadraticDerivative(4, 2), { a: 8, n: 1 })
-    );
-  });
-});
+describe("Note creation works properly", function() {
+    it("assigns author based on the parameter supplied in the constructor", function() {
+        note = new Note("Hello world", "Chidiebere")
+        assert(note.author == "Chidiebere")
+    })
+})
+
+describe("Notes application increments number of notes as notes are added", function() {
+    it("increments the note list as notes are added", function() {
+        note = new Note("Hello world", "Chidiebere");
+        noteapp = new NotesApplication("Chidiebere");
+        assert(noteapp.notelist.length == 0)
+        noteapp.addNote(note)
+        assert(noteapp.notelist.length == 1)
+    })
+})
