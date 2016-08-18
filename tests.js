@@ -90,23 +90,20 @@ describe("Note Application can delete notes", function () {
   var noteApp = new NotesApplication("Chidiebere");
   var noteOne = new Note("Hello world", "Chidiebere");
   var noteTwo = new Note("It's a small world", "James");
+  noteApp.addNote(noteOne);
+  noteApp.addNote(noteTwo);
 
   it("Can delete a specific note", function () {
-     noteApp.addNote(noteOne);
-     noteApp.addNote(noteTwo);
-
-     assert(noteApp.get(1) === noteOne);
-     noteApp.delete(1)
-     assert(noteApp.get(1) === "Note with ID: " + 1 + " not found");
+    assert(noteApp.get(1) === noteOne);
+    noteApp.delete(1);
+    assert(noteApp.get(1) === "Note with ID: " + 1 + " not found.");
   });
 
   it("Deletes only one note", function () {
-     noteApp.addNote(noteOne);
-     noteApp.addNote(noteTwo);
-
-     assert(noteApp.notes.length === 2);
-     noteApp.delete(1)
-     assert(noteApp.notes.length === 1);
+    noteApp.addNote(noteOne);
+    assert(noteApp.notes.length === 2);
+    noteApp.delete(3);
+    assert(noteApp.notes.length === 1);
   });
 });
 
@@ -121,4 +118,3 @@ describe("Notes Application can edit notes", function () {
     assert(note.content === "new note content");
   });
 });
-
