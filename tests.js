@@ -44,11 +44,12 @@ describe("Create section works fine", function(){
 
 describe("it should check if you can get a note", function(){
     it("check if you can retrieve a note with an ID of 0", function(){
-        note = new Notes("kachi", "stuff");
+        note = new Notes("Hello world", "Tosin");
         noteapp = new NotesApplication("Hello world", "Tosin");
         noteapp.create_notes(note);
         noteapp.get(0);
-        assert(noteapp.notes[0].note_content === "stuff");
+        assert(noteapp.notes[0].note_content === "Hello world");
+        //assert("Hello world");
     })
     it("check that you can't retrieve a note with an invalid ID", function(){
         note = new Notes("Hello world", "Tosin");
@@ -95,13 +96,13 @@ describe("search notes section works properly", function(){
 })
 
 describe("Delete section works properly", function(){
-    it("check that you can delete a note at index 1 ", function(){
+    it("check that you can delete a note  ", function(){
         note = new Notes("Hello world","Tosin");
         noteapp = new NotesApplication("Hello world","Tosin");
         noteapp.create_notes(note);
-        assert(noteapp.notes.length === 2);
-        noteapp.delete(1);
         assert(noteapp.notes.length === 1);
+        noteapp.delete(0);
+        assert(noteapp.notes.length === 0);
     })
     it("checks that you can't delete a note at an invalid index", function(){
         note = new Notes("Hello world","Tosin");        
