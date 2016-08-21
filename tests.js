@@ -4,7 +4,7 @@ var chai = require('chai');
 var assert = chai.assert;
 
 var NotesApplication = require('./lib/notesapplication.js');
-var Note = require('./lib/note.js');
+var Note = require('./lib/notes.js');
 
 describe("Note creation works properly", function() {
     it("assigns author based on the parameter supplied in the constructor", function() {
