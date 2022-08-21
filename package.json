@@ -10,7 +10,7 @@
     "mocha": "^3.0.2"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "./node_modules/.bin/mocha ./tests.js"
   },
   "keywords": [],
   "author": "",
